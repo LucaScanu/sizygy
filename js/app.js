@@ -11,7 +11,8 @@ $(document).ready(function() {
   var savedMaths = [];
   var date;
   var name;
-  var children;
+  var children = $("div.memory button.savedMath").length;
+  var index = [];
 
   function getValue(input) {
     if(dotOperator.includes(inputs[inputs.length-1]) === true && input === ".") {
@@ -43,15 +44,14 @@ $(document).ready(function() {
 
   function saveResult() {
 
-    children = $("div.memory button.savedMath").length;
-
     /* Once clicked, the save button will saved current result into saved maths array,  get the current date and prompt the user for a name and it will call the getDate function */
 
     $("#saveButton").on("click", function(e) {
       name = prompt("How would you like to call your result?");
       e.stopImmediatePropagation(); //this method will stop the promp popping up more than once at a time.
       savedMaths.push(currentResult);
-      console.log(savedMaths);
+      index.push(savedMaths.indexOf(currentResult));
+      console.log(index);
       getDate();
     });
   }
@@ -67,19 +67,45 @@ $(document).ready(function() {
 
   function saveMath() {
 
-      if($("button.savedMath:nth-child(1)").text() === ""){
-        $(".savedMath:nth-child(1)").text(""+name+". "+date+".");
+      if($("#save1").text() === "") {
+        $("#save1").text("" +name+ ". " +date+ ".");
       }
-      else if($("button.savedMath:nth-child(1)").text() !== ""){
-        $(".savedMath:nth-child(2)").text(""+name+". "+date+".");
+      else if($("#save1").text() !== "") {
+        $("#save2").text("" +name+ ". " +date+ ".");
       }
-      else if($("button.savedMath:nth-child(2)").text() !== ""){
-        $(".savedMath:nth-child(3)").text(""+name+". "+date+".");
+      else if($("#save1").text() !== "" && $("#save2").text() !== "") {
+        $("#save3").text("" +name+ ". " +date+ ".");
       }
+      displayResults();
   }
 
+    function displayResults() {
+      $("#save1").on("click", function() {
+        $("#result").html(valueOf(savedMaths.length-1));
+      });
+      $("#save2").on("click", function() {
+        $("#result").html(valueOf(savedMaths.length-1));
+      });
+    }
+
     $("#delete1").on("click", function() {
-        $(".savedMath:nth-child(1)").text("");
+        $("#save1").text("");
+    });
+
+    $("#delete2").on("click", function() {
+        $("#save2").text("");
+    });
+
+    $("#delete3").on("click", function() {
+        $("#save3").text("");
+    });
+
+    $("#delete4").on("click", function() {
+        $("#save4").text("");
+    });
+
+    $("#delete5").on("click", function() {
+        $("#save5").text("");
     });
 
 
