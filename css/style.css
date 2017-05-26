@@ -69,21 +69,22 @@ button {
   width: 280px;
   height: 250px;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
 }
 
-.memorySlot {
-  width: 280px;
-  height: 48px;
+.savedMath {
+  width: 200px;
+  height: 50px;
   background-color: #fff;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 .delete {
   width: 80px;
   height: 50px;
+  /*margin-top: -16px;*/
   background-color: #fff;
-  float: right;
+
 }
 
 .save {
