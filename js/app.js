@@ -9,6 +9,8 @@ $(document).ready(function() {
   var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   var currentResult;
   var savedMaths = [];
+  var date;
+  var name;
 
   function getValue(input) {
     if(dotOperator.includes(inputs[inputs.length-1]) === true && input === ".") {
@@ -44,9 +46,11 @@ $(document).ready(function() {
     var text = $("div.memory button.savedMath").text();
     console.log(children, text);
 
-    /* Once clicked the save button will saved current result into saved maths array,  get the current date and prompt the user for a name. At the end of it will call the save math function */
+    /* Once clicked, the save button will saved current result into saved maths array,  get the current date and prompt the user for a name and it will call the getDate function */
 
     $("#saveButton").on("click", function(e) {
+      name = prompt("How would you like to call your result?");
+      e.stopImmediatePropagation(); //this method will stop the promp popping up more than once at a time.
       savedMaths.push(currentResult);
       console.log(savedMaths);
       getDate();
@@ -57,13 +61,11 @@ $(document).ready(function() {
       var today =
       currentDate.getDate()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getFullYear();
       var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
-      var date = today+" "+time;
+      date = today+" "+time;
       saveMath();
     }
 
     function saveMath() {
-      var name = prompt("How would you like to call your result?");
-      e.stopImmediatePropagation(); //this method will stop the promp popping up more than once at a time.
 
       if($("button.savedMath:nth-child(1)").text() === ""){
         $(".savedMath:nth-child(1)").text(""+name+". "+date+".");
