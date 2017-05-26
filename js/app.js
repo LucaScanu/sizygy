@@ -11,6 +11,7 @@ $(document).ready(function() {
   var savedMaths = [];
   var date;
   var name;
+  var children;
 
   function getValue(input) {
     if(dotOperator.includes(inputs[inputs.length-1]) === true && input === ".") {
@@ -42,9 +43,7 @@ $(document).ready(function() {
 
   function saveResult() {
 
-    var children = $("div.memory button.savedMath").length;
-    var text = $("div.memory button.savedMath").text();
-    console.log(children, text);
+    children = $("div.memory button.savedMath").length;
 
     /* Once clicked, the save button will saved current result into saved maths array,  get the current date and prompt the user for a name and it will call the getDate function */
 
@@ -55,17 +54,18 @@ $(document).ready(function() {
       console.log(savedMaths);
       getDate();
     });
+  }
 
-    function getDate() {
-      var currentDate = new Date();
-      var today =
-      currentDate.getDate()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getFullYear();
-      var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
-      date = today+" "+time;
-      saveMath();
-    }
+  function getDate() {
+    var currentDate = new Date();
+    var today =
+    currentDate.getDate()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getFullYear();
+    var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+    date = today+" "+time;
+    saveMath();
+  }
 
-    function saveMath() {
+  function saveMath() {
 
       if($("button.savedMath:nth-child(1)").text() === ""){
         $(".savedMath:nth-child(1)").text(""+name+". "+date+".");
@@ -76,26 +76,29 @@ $(document).ready(function() {
       else if($("button.savedMath:nth-child(2)").text() !== ""){
         $(".savedMath:nth-child(3)").text(""+name+". "+date+".");
       }
-    }
   }
 
+    $("#delete1").on("click", function() {
+        $(".savedMath:nth-child(1)").text("");
+    });
 
-  $("button").on("click", function() {
-    if(this.id === "cancelButton") {
-      inputs = [""];
-      update();
-    }
-    else if(this.id === "total") {
-      getTotal();
-      inputs = [""];
-    }
-    else {
-      if(inputs[inputs.length-1].indexOf("+", "-", "*", "/", ".") === -1) {
-        getValue(this.value);
+
+    $("button").on("click", function() {
+      if(this.id === "cancelButton") {
+        inputs = [""];
+        update();
+      }
+      else if(this.id === "total") {
+        getTotal();
+        inputs = [""];
       }
       else {
-        getValue(this.value);
+        if(inputs[inputs.length-1].indexOf("+", "-", "*", "/", ".") === -1) {
+          getValue(this.value);
+        }
+        else {
+          getValue(this.value);
+        }
       }
-    }
+    });
   });
-});
