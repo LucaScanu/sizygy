@@ -1,3 +1,215 @@
 body {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.container  {
+
+}
+
+.calculator {
+  width: 700px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.results {
+  width: 700px;
+  height: 50px;
   background-color: yellow;
 }
+
+.numbers {
+  width: 360px;
+  height: 250px;
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.number {
+  width: 120px;
+  height: 50px;
+  background-color: #fff;
+}
+
+#dot {
+  margin-top: 50px;
+  margin-left: -120px;
+}
+
+.operators {
+  width: 60px;
+  height: 250px;
+  background-color: blue;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.operator {
+  width: 60px;
+  height: 50px;
+  background-color: #fff;
+}
+
+.memory {
+  width: 280px;
+  height: 250px;
+  background-color: red;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.memorySlot {
+  width: 280px;
+  height: 48px;
+  background-color: #fff;
+  border: 1px solid black;
+}
+
+.delete {
+  width: 80px;
+  height: 50px;
+  background-color: #fff;
+  float: right;
+}
+
+.save {
+  width: 120px;
+  height: 100px;
+  background-color: grey;
+  margin-top: -100px;
+  margin-left: 120px;
+}
+
+#saveButton {
+  width: 120px;
+  height: 100px;
+  background-color: #fff;
+}
+
+.cancel {
+  width: 120px;
+  height: 100px;
+  background-color: grey;
+  margin-top: -100px;
+}
+
+#cancelButton {
+  width: 120px;
+  height: 100px;
+  background-color: #fff;
+}
+
+
+/*#calculator {
+  height: 250px;
+  width: 600px;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #000;
+}
+
+#entrybox {
+  width: 100%;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid #000;
+}
+
+#entry {
+  text-align: right;
+  margin-right: 10px;
+  font-size: 35px;
+}
+
+#answer {
+  margin-top: 10px;
+}
+
+#buttons {
+  position: absolute;
+  display: inline-block;
+  width: 350px;
+  height: auto;
+  margin-top: 5px;
+}
+
+button {
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid black;
+  background-color: #fff;
+  height: 40px;
+  width: 80px;
+}
+
+.number {
+  border: none;
+  height: 40px;
+  width: 80px;
+}
+
+button:active {
+  transform: translate(0px, 3px);
+  box-shadow: none;
+}
+
+.row {
+  margin-top: 20px
+}
+
+#topAdjust {
+  margin-top: -52px;
+}
+
+#saveButton {
+  margin-left: 4px;
+  margin-top: -62px;
+  height: 70px;
+  width: 85px;
+}
+#deleteButton {
+  margin-left: -3px;
+  margin-top: -62px;
+  height: 70px;
+  width: 85px;
+}
+#equalButton {
+  position: absolute;
+  margin-left: 173px;
+  height: 40px;
+  width: 80px;
+}
+
+button,
+button:hover,
+button:active,
+button:visited {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+  color: #922031;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 5px;
+}
+
+.savedMaths {
+  float: right;
+  margin-right: 5px;
+  width: 260px;
+  height: 250px;
+}*/
