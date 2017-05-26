@@ -7,7 +7,8 @@ $(document).ready(function() {
   var operators = ["+", "-", "*", "/"];
   var dotOperator = ["."];
   var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var savedMaths = [""];
+  var currentResult;
+  var savedMaths = [];
 
   function getValue(input) {
     if(dotOperator.includes(inputs[inputs.length-1]) === true && input === ".") {
@@ -29,27 +30,53 @@ $(document).ready(function() {
   function update() {
     totalString = inputs.join("");
     $("#result").html(totalString);
-    console.log(totalString);
   }
   function getTotal() {
-    var currentResult = eval(totalString);
+    currentResult = eval(totalString);
     totalString = inputs.join("");
     $("#result").html(eval(totalString));
-    $("#saveButton").on("click", function() {
+    saveResult();
+  }
+
+  function saveResult() {
+
+    var children = $("div.memory button.savedMath").length;
+    var text = $("div.memory button.savedMath").text();
+    console.log(children, text);
+
+    /* Once clicked the save button will saved current result into saved maths array,  get the current date and prompt the user for a name. At the end of it will call the save math function */
+
+    $("#saveButton").on("click", function(e) {
       savedMaths.push(currentResult);
+      console.log(savedMaths);
+      getDate();
+    });
+
+    function getDate() {
       var currentDate = new Date();
       var today =
       currentDate.getDate()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getFullYear();
       var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
       var date = today+" "+time;
+      saveMath();
+    }
+
+    function saveMath() {
       var name = prompt("How would you like to call your result?");
+      e.stopImmediatePropagation(); //this method will stop the promp popping up more than once at a time.
 
-    $(".savedMath").text(""+name+". "+date+".");
-
-      console.log(name, date);
-    })
-
+      if($("button.savedMath:nth-child(1)").text() === ""){
+        $(".savedMath:nth-child(1)").text(""+name+". "+date+".");
+      }
+      else if($("button.savedMath:nth-child(1)").text() !== ""){
+        $(".savedMath:nth-child(2)").text(""+name+". "+date+".");
+      }
+      else if($("button.savedMath:nth-child(2)").text() !== ""){
+        $(".savedMath:nth-child(3)").text(""+name+". "+date+".");
+      }
+    }
   }
+
 
   $("button").on("click", function() {
     if(this.id === "cancelButton") {
